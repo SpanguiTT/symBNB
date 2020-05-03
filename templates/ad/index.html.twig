@@ -8,6 +8,9 @@
 
         <div class="row">
             {% for ad in ads %}
+
+                {% set url = path('ads_show', { 'slug': ad.slug }) %}
+
                 <div class="col-md-4">
                     <div class="card bg-light mb-3">
                         <div class="card-header text-center">
@@ -15,18 +18,22 @@
                             <small>Pas encore noté</small>
                         </div>
 
-                        <img src="{{ ad.coverImage }}" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block;">
+                        <a href="{{ url }}">
+                            <img src="{{ ad.coverImage }}" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block;">
+                        </a>
 
                         <div class="card-body">
                             <h4 class="card-title">
-                                {{ ad.title }}
+                                <a href="{{ url }}">
+                                    {{ ad.title }}
+                                </a>
                             </h4>
                             <p class="card-text">
                             <span>
                                 {{ ad.introduction }}
                             </span>
                             </p>
-                            <a href="#" class="btn btn-secondary">En savoir +</a>
+                            <a href="{{ url }}" class="btn btn-secondary">En savoir +</a>
                         </div>
                     </div>
                 </div>
